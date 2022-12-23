@@ -1,4 +1,4 @@
-public class ourStack
+public class OurStack
 {
     int size;
     int [] array;
