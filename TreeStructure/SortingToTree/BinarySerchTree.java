@@ -1,6 +1,7 @@
 public class BinarySerchTree
 {
     Node root=null;
+    int height=0;
 
     public void insert(Node node, int data)
     {
@@ -69,5 +70,43 @@ public class BinarySerchTree
 
         }
 
+    }
+
+    public int  height(Node root)
+    {
+        if (root==null)
+        {
+            return 0;
+        }
+        else
+        {
+            int left=0,right=0;
+           left= height(root.left);
+           right=  height(root.right);
+
+            if (left>right)
+            {
+                return left+1;
+            }
+            else
+            {
+                return right+1;
+            }
+        }
+    }
+
+    public int valueOfQuality(Node root)
+    {
+        if (root==null)
+        {
+            return 0;
+        }
+        else
+        {
+           int quality=0;
+           quality= valueOfQuality(root.left)+ valueOfQuality(root.right)+1;
+
+            return quality;
+        }
     }
 }

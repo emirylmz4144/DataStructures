@@ -11,11 +11,9 @@ public class Main {
         binarySerchTree.insert(binarySerchTree.root,20);
 
 
-        binarySerchTree.preOrder(binarySerchTree.root);
-        System.out.println();
-        binarySerchTree.inOrder(binarySerchTree.root);
-        System.out.println();
-        binarySerchTree.postOrder(binarySerchTree.root);
+
+        System.out.println(binarySerchTree.height(binarySerchTree.root));
+        System.out.println(binarySerchTree.valueOfQuality(binarySerchTree.root));
 
 
     }
