@@ -149,12 +149,13 @@ public class List
             Node temp1=head;
             Node temp2=head;
 
-            while (temp2.getNext()!=head)
+            while (temp2.getNext()!=head)//Son elemanın nexti başı gösterdiği için sona geldiğimizi bu yolla anlarız
             {
                 temp1=temp2;
                 temp2=temp2.getNext();
 
             }
+            //Sondan bir önceki elaman sona atanır ve nexti başı gösterir
             tail=temp1;
             tail.setNext(head);
             counter--;
@@ -168,34 +169,31 @@ public class List
         int counter=Node.getCounter();
         if (head==null )
         {
-
             System.out.println("Liste zaten boştur");
         }
-        else if (value== head.getValue())
+        else if(head==tail && value==head.getValue())//Değer baştaki ise ve baştaki tek elemansa
+        {
+            head=null;
+            tail=null;
+        }
+        else if (value== head.getValue())//Değer sadece baştaki elemansa
         {
             head=head.getNext();
             counter--;
             Node.setCounter(counter);
         }
-        else if(head==tail)
+
+        else // O zaman ya sondaki ya da ortalardaki bir eleman silinecek
         {
-            head=null;
-            tail=null;
-        }
-        else
-        {
-            if (value==tail.getValue())
+            if (value==tail.getValue())//sondaki ise
             {
                 Node temp=head;
-                Node temp2=head;
-                while (temp.getNext()!=head)
+                while (temp.getNext()!=tail)//Sondan bir öncekine kadar devam eder
                 {
-                    temp2=temp;
-                    temp=temp.getNext();
+                    temp=temp.getNext();//temp sondan bir önceki olarak atanır
                 }
-                tail=temp2;
-                tail.setNext(head);
-
+                temp.setNext(tail.getNext());//Sondan bir öncekinin pointerı sondakinin pointerı olarak atanır
+                tail=temp;//Son eleman sondan bir öncekini olarak ayarlanır
             }
             else {
                 Node temp1 = head;
