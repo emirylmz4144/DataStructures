@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/DataStructures.iml" filepath="$PROJECT_DIR$/.idea/DataStructures.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LinkedLists/Josephus Problem/Josephus Problem.iml" filepath="$PROJECT_DIR$/LinkedLists/Josephus Problem/Josephus Problem.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LinkedLists/LinkedLists.iml" filepath="$PROJECT_DIR$/LinkedLists/LinkedLists.iml" />
+      <module fileurl="file://$PROJECT_DIR$/QueueStructure/QueueStructure.iml" filepath="$PROJECT_DIR$/QueueStructure/QueueStructure.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SortingAlgorithm/SortingAlgorithm.iml" filepath="$PROJECT_DIR$/SortingAlgorithm/SortingAlgorithm.iml" />
+      <module fileurl="file://$PROJECT_DIR$/StackStructure/StackStructure.iml" filepath="$PROJECT_DIR$/StackStructure/StackStructure.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TreeStructure/TreeStructure.iml" filepath="$PROJECT_DIR$/TreeStructure/TreeStructure.iml" />
+    </modules>
+  </component>
+</project>

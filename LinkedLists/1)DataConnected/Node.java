@@ -1,7 +1,8 @@
 public class Node
 {
      int value;
-     Node next;
+
+     Node next; //Burada sınıf içerisinde aynı sınıfı üreterek birbirini gösterecek nodeları elde ediyoruz.
 
     public int getValue()
     {
