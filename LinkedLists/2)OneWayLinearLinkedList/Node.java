@@ -2,7 +2,7 @@ public class Node
 {
     private int value;
     private Node next;
-    private static int counter=0;
+    private static int counter=0;//Sınıftan bağımsız olarak toplam nodeların sayısını tutar
     public Node()
     {
         counter++;

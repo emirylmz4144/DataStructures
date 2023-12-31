@@ -3,12 +3,12 @@ public class List
     Node head=null;
     Node tail=null;
 
-    public void addFirst(int value)       //Başa eleman ekleme için kullanılır
+    public void addFirst(int value)//Başa eleman ekleme için kullanılır
     {
-        Node eleman=new Node();              //Eklenecek eleman için düğüm oluşturulur
-        eleman.setvalue(value);              //Girilen değer oluşan düğüme atanır
+        Node eleman=new Node();//Eklenecek eleman için düğüm oluşturulur
+        eleman.setvalue(value);//Girilen değer oluşan düğüme atanır
 
-        if (head==null)                      //Listede eleman yoksa girilen elemanı başa ve sona ekler
+        if (head==null)//Listede eleman yoksa girilen elemanı başa ve sona ekler
         {
             eleman.setNext(null);
             head=eleman;
@@ -49,6 +49,7 @@ public class List
     }
     public void addToBetween(int index,int value)
     {
+        //eklenecek eleman için node oluşturulur
         Node eleman=new Node();
         eleman.setvalue(value);
 
@@ -75,7 +76,7 @@ public class List
             Node temp=head;
             Node temp2;
 
-            int qualityOfList=0; //Düğüm miktarını ölçmek için kullanılan sayaç
+            int qualityOfList=0; //Toplam node sayısını bulmak ve indexe göre ekleme yapmak için sayaç
 
             while (temp!=null)  //Düğüm miktarı ölçülür
             {
@@ -90,7 +91,7 @@ public class List
                 tail=eleman;
                 tail.setNext(eleman);
             }
-            else                     //Girilen eleman sona ait değilse araya eklenecek demektir
+            else  //Girilen eleman sona ait değilse araya eklenecek demektir
             {
                 //Girilen eleman 2 ve 3.index arasına girecekse     ;
 
@@ -126,7 +127,7 @@ public class List
         else
         {
             head=head.getNext();
-            counter--;
+            counter--;//Node eleman sayısını tutan counter azalır
             Node.setCounter(counter);
 
         }
@@ -138,8 +139,9 @@ public class List
         {
             System.out.println("Liste zaten boştur");
         }
-        else if (head.getNext()==null)
+        else if (head.getNext()==null)//Tek eleman varsa onu siler
         {
+            //Eleman olmadığı belirtilir
             head=null;
             tail=null;
             counter--;
@@ -152,12 +154,14 @@ public class List
 
             while (temp2.getNext()!=null)
             {
-                temp1=temp2;
-                temp2=temp2.getNext();
+                temp1=temp2;//Sondan bir önceki elemana gider
+                temp2=temp2.getNext();//Son elemana gider
 
             }
+            //Sondan bir önceki eleman son elaman olarak atanır
             temp1.setNext(null);
             tail=temp1;
+            //Eleman sayısı güncellenir
             counter--;
             Node.setCounter(counter);
 
@@ -167,12 +171,12 @@ public class List
     public void removeToBetween(int value)
     {
         int counter=Node.getCounter();
-        if (head==null )
+        if (head==null )//Başta eleman yoksa
         {
 
             System.out.println("Liste zaten boştur");
         }
-        else if (value== head.getValue())
+        else if (value== head.getValue())//Baştaki elemanı seçilmesi sağlanmışsa
         {
             head=head.getNext();
             counter--;
@@ -180,14 +184,17 @@ public class List
         }
         else
         {
+           // Silinecek indexten öncesi ve sonrası tutularak ilgili eleman silinir ve öncesi ile sonrası bağlanır
             Node temp1=head;
             Node temp2=head;
             while (value!=temp2.getValue())
             {
-                temp1=temp2;
-                temp2=temp2.getNext();
+                temp1=temp2;//Silinecek elemandan bir öncesi
+                temp2=temp2.getNext();//Silinecek eleman
             }
+            /*Silinecek elemandan bir öncesinin nexti silinecek elemanın nextini gösterir */
             temp1.setNext(temp2.getNext());
+            //Var olan eleman sayısı azaltılır
             counter--;
             Node.setCounter(counter);
 
