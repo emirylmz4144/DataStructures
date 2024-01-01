@@ -1,45 +1,43 @@
 public class Queue
 {
-   private final int [] queue;
-   private final int size;
+   private final int [] queue;//Stack için dizi oluşturulmuştur
+   private final int size;//Dizinin boyutu
    private final int front;
-   private int rear;
+   private int back;
 
     public Queue (int size)
     {
-        this.size=size;
+        this.size=size;//Kullanıcıdan alınan boyut bilgisi atanır
         this.queue=new int[size];
-        front=0;
-        rear=-1;
+        front=0;//Son eleman en başa geleceğinden en baş yani 0.indisi bir değişkene atıyoruz
+        back =-1;//diziler 0 dan başladığı için 0 dan küçük bir değer ile boş mu dolu mu kontrokü yapılması için
     }
 
+    /**Stack yapısına veri ekler**/
     public void enQueue(int data)
     {
         if (isFull())
-        {
             System.out.println("Kuyruk yapısı dolu");
-        }
         else
         {
-            this.rear++;
-            queue[rear]=data;
+            this.back++;//ilk elemandan itibaren 0 dan başlanarak arttırma yapılır
+            queue[back]=data;//sayacın her artan değeri dizinin o değerine atanır
         }
     }
+    /**Stack'ten veri çıkarır**/
     public void deQueue()
     {
         if (isEmpty())
-        {
             System.out.println("Kuyruk yapısı boş");
-        }
+
         else
         {
-            int sayi=queue[front];
-            for (int i=1; i<=rear;i++)
-            {
-                queue[i-1]=queue[i];
-            }
+            int sayi=queue[front];//çıkarılan sayı gösterilip silineceği için bir değişkene atanır
+            for (int i = 1; i<= back; i++)
+                queue[i-1]=queue[i];// eleman çıkarıldığı için her elaman bir öne alınır
+
             System.out.println("En öndeki  eleman: "+sayi);
-            this.rear--;
+            this.back--;//eleman sayısı azaltılır
 
         }
     }
@@ -47,8 +45,10 @@ public class Queue
     {
         System.out.println("------------------------------");
         System.out.println("Kuyruk max booyutu: "+this.size);
-        if (rear==-1) {System.out.println("Kuyruktaki eleman sayısı: " + 0);}
-        else {System.out.println("Kuyruktaki eleman sayısı: "+(this.rear+1));}
+        if (back ==-1)
+            System.out.println("Kuyruktaki eleman sayısı: " + 0);
+        else
+        System.out.println("Kuyruktaki eleman sayısı: "+(this.back +1));
 
         System.out.println("------------------------------");
     }
@@ -56,11 +56,11 @@ public class Queue
 
     public boolean isFull()
     {
-        return rear>=size-1;
+        return back >=size-1;
     }
     public boolean isEmpty()
     {
-        return rear==-1;
+        return back ==-1;
     }
 
 }
