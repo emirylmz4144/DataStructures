@@ -2,18 +2,18 @@ import java.util.Scanner;
 
 public class Queue
 {
-    private QueueNode front;
-    private QueueNode rear;
-    private final int size;
-    private int counter;
+    private QueueNode top;//En üstteki elemanı tutan node
+    private QueueNode back;//En arkadaki elemanı tutan node
+    private final int size;//Yığıtın boyutu
+    private int counter;//Yığıttaki eleman miktarı
 
     Scanner input=new Scanner(System.in);
 
     public Queue(int size)
     {
         this.size=size;
-        this.front=null;
-        this.rear=null;
+        this.top =null;
+        this.back =null;
         this.counter=0;
     }
 
@@ -33,16 +33,16 @@ public class Queue
 
             QueueNode queueNode=new QueueNode(value);
 
-            if (front==null)
+            if (top ==null)//Eğer top boşsa ilk eleman gelen değerdir ve en arkada en önde bu elemandır
             {
-                setFront(queueNode);
-                setRear(queueNode);
+                setTop(queueNode);
+                setBack(queueNode);
             }
             else
             {
-                getRear().setNext(queueNode);
-                queueNode.setPrev(rear);
-                setRear(queueNode);
+                getBack().setNext(queueNode);//En arkadaki elemanın bir arkası yeni gelen eleman olarak atanır
+                queueNode.setPrev(back);//
+                setBack(queueNode);
             }
             counter++;
 
@@ -65,11 +65,11 @@ public class Queue
         else
         {
             System.out.println("-----------------------------------");
-            System.out.println("Kuyruğa ilk giren eleman: "+front.getData());
-            setFront(getFront().getNext());
+            System.out.println("Kuyruğa ilk giren eleman: "+ top.getData());
+            setTop(getTop().getNext());
             if (counter>1)
             {
-                getFront().setPrev(null);
+                getTop().setPrev(null);
             }
             counter--;
             System.out.println("-----------------------------------");
@@ -97,7 +97,7 @@ public class Queue
             }
 
 
-            QueueNode temp=front;
+            QueueNode temp= top;
             int intTemp=1;
 
             while (index!=intTemp)
@@ -130,7 +130,7 @@ public class Queue
         else
         {
             System.out.println("-----------------------------------");
-            QueueNode temp=front;
+            QueueNode temp= top;
             for (int i=1;i<=counter;i++)
             {
                 System.out.println(i+". sıradaki eleman: "+temp.getData());
@@ -143,7 +143,7 @@ public class Queue
 
     public void printToLast()
     {
-        if (front==null)
+        if (top ==null)
         {
             System.out.println("-----------------------------------");
             System.out.println("Yazdırılacak eleman yok..");
@@ -151,7 +151,7 @@ public class Queue
         }
         else
         {System.out.println("-----------------------------------");
-            QueueNode temp=rear;
+            QueueNode temp= back;
             for (int i=counter;i>=1;i--)
             {
                 System.out.println(i+".sıradaki eleman: "+temp.getData());
@@ -173,20 +173,20 @@ public class Queue
         return counter==size;
     }
 
-    public QueueNode getFront() {
-        return front;
+    public QueueNode getTop() {
+        return top;
     }
 
-    public void setFront(QueueNode front) {
-        this.front = front;
+    public void setTop(QueueNode top) {
+        this.top = top;
     }
 
-    public QueueNode getRear() {
-        return rear;
+    public QueueNode getBack() {
+        return back;
     }
 
-    public void setRear(QueueNode rear) {
-        this.rear = rear;
+    public void setBack(QueueNode back) {
+        this.back = back;
     }
 
 }

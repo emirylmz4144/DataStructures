@@ -9,7 +9,7 @@ public class StackActions
         Scanner input=new Scanner(System.in);
         System.out.println("Dizinin büyüklüğü ne olacak: ");
         int size=input.nextInt();
-        ourStack ourStack=new ourStack(size);
+        OurStack ourStack=new OurStack(size);
 
         boolean status=true;
         while (status)

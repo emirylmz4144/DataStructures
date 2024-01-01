@@ -3,6 +3,5 @@ public class Main {
     {
      StackActions stackActions=new StackActions();
      stackActions.run();
-     
     }
 }
