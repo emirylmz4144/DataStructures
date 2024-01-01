@@ -7,6 +7,7 @@ public class StudentAffairs {
     Scanner input = new Scanner(System.in);
 
     public void addStudent() {
+        //Bilgiler alınır
         System.out.println("Lütfen öğrenci   numarasını giriniz");
         int number = input.nextInt();
         input.nextLine();
@@ -19,17 +20,29 @@ public class StudentAffairs {
         System.out.println("Lütfen öğrenici  final      notunuvgiriniz: ");
         int lastExam = input.nextInt();
 
+        //Öğrenci node oluşturulur
         StudentNode ourNewStudent = new StudentNode(number, name, surName, firstExam, lastExam);
 
-        if (head == null) {
+        if (head == null)//eğer öğrenci yoksa
+        {
             head = ourNewStudent;
             tail = ourNewStudent;
+            tail.next=head;
             System.out.println();
             System.out.println("------------------------------------------");
             System.out.println(number + " numaralı ilk öğrenci kaydedildi");
-        } else {
-            head.next = ourNewStudent;
-            tail = ourNewStudent;
+        }
+        else
+        { //Öğrenci sona eklenir
+            StudentNode temp=head;
+            while (temp.next!=null)
+            {
+                temp=temp.next;
+            }
+            temp.next=ourNewStudent;
+            tail=ourNewStudent;
+            tail.next=head;
+
             System.out.println("------------------------------------------");
             System.out.println(number + "  numaralı öğrenci kaydedildi");
         }
@@ -42,8 +55,9 @@ public class StudentAffairs {
     public void deleteStudent() {
         if (head == null) {
             System.out.println("Listede zaten öğrenci yok");
-        } else {
-
+        }
+        else
+        {
             System.out.println("Lütfen silmek istediğiniz öğrencinin numarasını giriniz: ");
             int numberForDelete = input.nextInt();
 
@@ -52,33 +66,46 @@ public class StudentAffairs {
                 tail = null;
                 System.out.println(numberForDelete + " numaralı öğrenci silindi");
 
-            } else if (numberForDelete == head.getNumber()) {
+            }
+            else if (numberForDelete == head.getNumber())//Eğer öğrenci baştaysa
+            {
                 head = head.next;
                 System.out.println(numberForDelete + " numaralı öğrenci silindi");
 
-            } else {
+            } else
+            {
                 StudentNode studentNode = head;
                 StudentNode studentNode2 = head;
-                if (numberForDelete == tail.getNumber()) {
-                    while (studentNode2 != null) {
+
+                if (numberForDelete == tail.getNumber()) //Eğer öğrenci sondaysa
+                {
+                    while (studentNode2 != null)
+                    {
                         studentNode = studentNode2;
                         studentNode2 = studentNode2.next;
                     }
                     tail = studentNode;
+                    tail.next=head;
                     System.out.println(numberForDelete + " numaralı öğrenci silindi ");
-                } else {
+                }
+                else// Eğer öğrenci aradaysa
+                {
                     studentNode = head;
                     studentNode2 = head;
-                    while (studentNode2.getNumber() != numberForDelete) {
-                        if (studentNode2.next == null) {
+                    while (studentNode2.getNumber() != numberForDelete)
+                    {
+                        //sondan bir önceki eleman değilse böyle bir öğrenci yoktur çünki sondaki eleman kontrolünü daha önce yapmıştık
+                        if (studentNode2.next == null)
+                        {
                             System.out.println("Böyle bir eleman yoktur");
                             break;
-                        } else {
+                        } else
+                        {
                             studentNode = studentNode2;
-                            studentNode2 = studentNode2.next;
+                            studentNode2 = studentNode2.next;//silinecek öğrenciyi studentNode2 tutar
                         }
                     }
-                    studentNode.next = studentNode2.next;
+                    studentNode.next = studentNode2.next;//silinecek öğrenciden öncekini sonraskine bağlar ve öğrenci silinir
                     System.out.println(numberForDelete + " numaralı öğrenci silindi");
                 }
 
