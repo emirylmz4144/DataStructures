@@ -29,7 +29,7 @@ public class CafeSystemOtomation
             switch (choose) {
                 case 1 -> cafeSystem.addCustomer();
                 case 2 -> cafeSystem.deleteCustomer();
-                case 3 -> cafeSystem.upDate();
+                case 3 -> cafeSystem.update();
                 case 4 -> cafeSystem.search();
                 case 5 -> cafeSystem.printFromFirst();
                 case 6 -> cafeSystem.printFromLast();

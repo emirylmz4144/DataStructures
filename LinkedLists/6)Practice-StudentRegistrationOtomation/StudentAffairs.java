@@ -41,7 +41,6 @@ public class StudentAffairs {
             }
             temp.next=ourNewStudent;
             tail=ourNewStudent;
-            tail.next=head;
 
             System.out.println("------------------------------------------");
             System.out.println(number + "  numaralı öğrenci kaydedildi");
@@ -85,7 +84,6 @@ public class StudentAffairs {
                         studentNode2 = studentNode2.next;
                     }
                     tail = studentNode;
-                    tail.next=head;
                     System.out.println(numberForDelete + " numaralı öğrenci silindi ");
                 }
                 else// Eğer öğrenci aradaysa

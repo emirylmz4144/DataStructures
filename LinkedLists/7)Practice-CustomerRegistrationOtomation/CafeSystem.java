@@ -9,6 +9,7 @@ public class CafeSystem
    static int id;
 
 
+   /**Yeni müşteri eklenir**/
     public void addCustomer()
     {
         CafeSystem.id++;
@@ -26,13 +27,13 @@ public class CafeSystem
         else
         {
             CustomerNode temp=head;
-            while (temp.getNext()!=null)
+            while (temp.getNext()!=null)//En sona ekleme yapılacağı için sona gidilmiştir
             {
                 temp=temp.getNext();
             }
             temp.setNext(customer);
             customer.setPrev(temp);
-            tail=customer;
+            tail=customer;//En sona eklenen müşteri aynı zamanda kuyruk olarak ayarlanmıştır
 
             System.out.println(customer.getId()+" Numaralı müşteri kaydedilmiştir");
         }
@@ -40,6 +41,7 @@ public class CafeSystem
 
 
 
+    /**Müşteri güncellenir**/
     public void deleteCustomer()
     {
         System.out.println("Silmek istediğiniz müşteri id sini yazınız: ");
@@ -50,7 +52,7 @@ public class CafeSystem
             System.out.println("Zaten müşteri yok");
         }
 
-        else if (head.getNext()==null && head.getId()==deleteId)
+        else if (head.getNext()==null && head.getId()==deleteId)//Tek eleman var ve o da head ise
         {
             System.out.println(head.getId()+" Numaralı müşteri silinimiştir");
             head=null;
@@ -58,14 +60,14 @@ public class CafeSystem
         }
 
 
-        else if (head.getNext()!=null && head.getId()==deleteId)
+        else if (head.getNext()!=null && head.getId()==deleteId)//head'den sonra eleman varsa
         {
             System.out.println(head.getId()+" Numaralı müşteri silinimiştir");
             head=head.getNext();
             head.setPrev(null);
         }
 
-        else if (tail.getId()==deleteId)
+        else if (tail.getId()==deleteId)//Son eleman silinecekse
         {
             System.out.println(tail.getId()+" Numaralı müşteri silinmiştir..");
             tail=tail.getPrev();
@@ -74,10 +76,11 @@ public class CafeSystem
         else
         {
             CustomerNode temp=head;
+
             while (temp.getId()!=deleteId)
             {
                 temp=temp.getNext();
-                if (temp==null)
+                if (temp==null)//Bir önceki ifte son eleman ise şartı sağlanmadığı halde temp null olursa demekki öyle bir eleman yok
                 {
                     System.out.println("Böyle bir müşteri bulunmamaktadır..");
                     break;
@@ -87,14 +90,15 @@ public class CafeSystem
             if (temp!=null)
             {
                 System.out.println(temp.getId()+" Numaralı öğrenci silimmiştir..");
-                temp.getPrev().setNext(temp.getNext());
-                temp.getNext().setPrev(temp.getPrev());
+                temp.getPrev().setNext(temp.getNext());//Aradaki elemanın öncekini aradaki elemanın sonrasına bağla
+                temp.getNext().setPrev(temp.getPrev());//aradaki elemanın sonrasın aradaki elemanın öncekine bağla
             }
         }
 
     }
 
-    public void upDate()
+    /**Müşteri siparişi güncellenir**/
+    public void update()
     {
         if (head==null)
         {
@@ -126,6 +130,7 @@ public class CafeSystem
 
     }
 
+    /**Müşteri id bilgisine göre aranır ve bilgileri ekrana yazdırılır**/
     public void search()
     {
         if (head==null)
@@ -160,6 +165,7 @@ public class CafeSystem
     }
 
 
+    /**Müşteriler ekrana ilk müşteriden başlayarak yazdırılır**/
     public void printFromFirst()
     {
         if (head==null)
@@ -169,7 +175,7 @@ public class CafeSystem
         else
         {
 
-            CustomerNode temp=head;
+            CustomerNode temp=head;//Kafadan başlarsa baştan listelenir
             System.out.println("-----------MÜŞTERİ BİLGİLERİ---------------");
             while (temp!=null)
             {
@@ -182,6 +188,7 @@ public class CafeSystem
             }
         }
     }
+    /**Müşteriler ekrana son müşteriden başlayarak yazdırılır**/
     public void printFromLast()
     {
         if (head==null)
@@ -190,7 +197,7 @@ public class CafeSystem
         }
         else
         {
-            CustomerNode temp=tail;
+            CustomerNode temp=tail;//Kuyruktan başlanırsa sondan listelenir
             System.out.println("-----------MÜŞTERİ BİLGİLERİ---------------");
             while (temp!=null)
             {
