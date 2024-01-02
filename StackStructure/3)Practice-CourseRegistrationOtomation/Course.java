@@ -2,9 +2,9 @@ import java.util.Scanner;
 
 public class Course
 {
-    private final int capasity;
-    private StudentNode top;
-    private int counter;
+    private final int capasity;//Kurs kapasitesi alınır
+    private StudentNode top;//En son öğrenci en başta olacaktır
+    private int counter;//Öğrenci sayısını ölçmek için kullanılan sayaçtır
     static int id=0;
 
     Scanner input=new Scanner(System.in);
@@ -28,15 +28,14 @@ public class Course
             System.out.println("Lütfen öğrencinin aldığı kursun adını giriniz ");  String course=input.nextLine();
             System.out.println("Lütfen öğrencinin yaşını giriniz: "); int age=input.nextInt();
             input.nextLine();
-            id++;
+            id++;//id otomatik olarak artar
 
             StudentNode newStudent=new StudentNode(name,course,age,id);
 
-            if (top != null)
-            {
+            if (top != null)//Eğer top boş değilse gelen öğrencinin nexti bir önceki öğrenciyi gösterir.
                 newStudent.setNext(top);
-            }
-            top=newStudent;
+
+            top=newStudent;//En son gelen her koşulda top'a yerleşir
             this.counter++;
         }
 
@@ -51,6 +50,7 @@ public class Course
         }
         else
         {
+            //Yığıttan çıkarılan öğrenci mezun oldu şeklinde ifade edilmiştir
             System.out.println("-------Sisteme en son eklenen öğrenci bilgileri-----------");
             System.out.println("Mezun edilen öğreci id: "+top.getId());
             System.out.println("Mezun edilen öğreci adı: "+top.getName());
@@ -58,13 +58,13 @@ public class Course
             System.out.println("Mezun edilen öğreci yaşı: "+top.getAge());
             System.out.println("----------------------------------------------------------------");
 
-
             top=top.getNext();
             this.counter--;
         }
 
     }
 
+    /**Öğrenci bilgileri değiştirmek için kullanılan method**/
     public void changeStudentInformations()
     {
         if (isEmpty())
@@ -79,7 +79,7 @@ public class Course
             StudentNode temp=top;
             while (temp.getId()!=id)
             {
-                temp=temp.getNext();
+                temp=temp.getNext();//Sona geldiği halde id numarası bulunmadıysa
                 if (temp==null)
                 {
                     System.out.println("Böyle bir öğrenci yoktur..");
