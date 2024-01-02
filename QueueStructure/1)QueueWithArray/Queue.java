@@ -1,16 +1,16 @@
 public class Queue
 {
-   private final int [] queue;//Stack için dizi oluşturulmuştur
+   private final int [] queue;//Queue için dizi oluşturulmuştur
    private final int size;//Dizinin boyutu
-   private final int front;
-   private int back;
+   private final int front;//en öndeki eleman
+   private int back;//en son elemanını ve eleman miktarını tutan kuyruk (eleman eklenirse kuyruk olması için)
 
     public Queue (int size)
     {
         this.size=size;//Kullanıcıdan alınan boyut bilgisi atanır
         this.queue=new int[size];
-        front=0;//Son eleman en başa geleceğinden en baş yani 0.indisi bir değişkene atıyoruz
-        back =-1;//diziler 0 dan başladığı için 0 dan küçük bir değer ile boş mu dolu mu kontrokü yapılması için
+        front=0;//en öndeki elemanı sabitlemek için
+        back =-1;//Diziler 0 dan başladığı için eleman eklenirse kuyruk 0 olacak
     }
 
     /**Stack yapısına veri ekler**/
@@ -29,7 +29,6 @@ public class Queue
     {
         if (isEmpty())
             System.out.println("Kuyruk yapısı boş");
-
         else
         {
             int sayi=queue[front];//çıkarılan sayı gösterilip silineceği için bir değişkene atanır
