@@ -32,7 +32,7 @@ public class Main {
     }
     public static void merge(int [] array,int start,int middle,int end)
     {
-        int [] left=new int[(middle-start)+1];//sağ ve solda gönderilen her başlangıç index'i 1 eksiktir (sol=0 )
+        int [] left=new int[(middle-start)+1];//sol index middle'ı içermelidir
         int [] right=new int[(end-middle)];
 
         // sol ve sağ diziye elemanlar yerleşitirilir
